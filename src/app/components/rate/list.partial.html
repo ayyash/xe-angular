@@ -1,7 +1,7 @@
 <ng-container *ngIf="rates$ | async as rates">
     <ul class="row-spaced umd-4">
        <li class="ucol" *ngFor="let item of rates">
-        <xe-rate-card [rate]="item"></xe-rate-card>
+        <xe-rate-card [rate]="item" [amount]="(fixerState$ | async).amount"></xe-rate-card>
        </li>
     </ul>
 </ng-container>

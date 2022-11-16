@@ -3,6 +3,7 @@
 export { ConfigService } from '../services/config.service';
 export { DataService } from '../services/data.service';
 export { FixerService } from '../services/fixer.service';
+export { FixerState } from '../services/fixer.state';
 export { LoaderService } from '../services/loader.service';
 export { StorageService } from '../services/storage.service';
 // endinject

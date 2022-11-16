@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { catchError, Observable, switchMap } from 'rxjs';
+import { Observable, switchMap} from 'rxjs';
 import { Config } from '../../config';
-import { DataService, FixerService, IData, IFixer } from '../../core/services';
+import { DataService, FixerService, FixerState, IFixer } from '../../core/services';
 import { Toast } from '../../lib/toast/toast.state';
+import { ISomething } from '../../services/fixer.state';
 import { RateCardPartialComponent } from './card.partial';
 
 @Component({
@@ -17,12 +18,18 @@ import { RateCardPartialComponent } from './card.partial';
 export class RateListPartialComponent implements OnInit {
 
     rates$: Observable<IFixer[]>;
-    constructor(private fixerService: FixerService, private dataService: DataService, private toast: Toast) {
+    fixerState$: Observable<ISomething>;
+
+    constructor(private fixerService: FixerService, private fixerState: FixerState, private toast: Toast) {
         //
     }
     ngOnInit(): void {
-        // get base from elsewhere, keep state
+        this.fixerState$ = this.fixerState.stateItem$;
 
-        this.rates$ = this.fixerService.GetFixers({symbols: Config.Basic.MostPopular, base: Config.Basic.BaseCurrency});
+        // get base from elsewhere, keep state
+        this.rates$ = this.fixerState.stateItem$.pipe(
+            switchMap(state => this.fixerService.GetFixers({symbols: Config.Basic.MostPopular, base: state.currentBase}))
+        );
+
     }
 }

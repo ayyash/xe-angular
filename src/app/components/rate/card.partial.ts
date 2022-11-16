@@ -11,6 +11,12 @@ import { IFixer } from '../../core/services';
 })
 export class RateCardPartialComponent implements OnInit {
     @Input() rate: IFixer;
+    result: number;
+
+    @Input() set amount(value:number) {
+        // TODO: cleanup number
+        this.result = this.rate.xeRate * value;
+    }
 
     constructor() {
         //
