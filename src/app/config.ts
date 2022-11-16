@@ -30,7 +30,15 @@ export const Config = {
         config: {
             local: environment.localConfig
         }
-         // **gulpmodel**
+         , fixer: {
+    list: '/latest?:options',
+    details: '/fixers/:id',
+    create: '/fixers', // POST
+    save: '/fixers/:id', // PUT
+    delete: '/fixers/:id', // DELETE
+}
+
+// **gulpmodel**
     }
 };
 

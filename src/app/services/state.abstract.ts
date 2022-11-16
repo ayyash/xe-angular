@@ -2,10 +2,10 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { clone } from '../core/common';
 import { debug } from '../core/rxjs.operators';
-import { IListItem } from '../models/list.model';
+// import { IListItem } from '../models/list.model';
 
 
-export class ListStateService<T extends IListItem>  {
+export class ListStateService<T>  {
 
     protected stateList: BehaviorSubject<T[]> = new BehaviorSubject([]);
     stateList$: Observable<T[]> = this.stateList.asObservable();
@@ -40,25 +40,6 @@ export class ListStateService<T extends IListItem>  {
     }
 
 
-    addItem(item: T): void {
-        this.stateList.next([...this.currentList, item]);
-
-    }
-    prependItem(item: T): void {
-        this.stateList.next([item, ...this.currentList]);
-    }
-
-    editItem(item: T): void {
-        const currentList = [...this.currentList];
-        const index = currentList.findIndex(n => n.id === item.id);
-        if (index > -1) {
-            currentList[index] = clone(item); // use a proper cloner
-            this.stateList.next(currentList);
-        }
-    }
-    removeItem(item: T): void {
-        this.stateList.next(this.currentList.filter(n => n.id !== item.id));
-    }
 
 }
 
