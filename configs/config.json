@@ -1,0 +1,17 @@
+{
+
+    "API": {
+        "apiRoot": "http://localhost:1000/api/fixer",
+        "key": "DrFYvvJnNVi1M3SwH14tvtJZZaS8AE7s"
+    },
+    "Auth": {
+        "userAccessKey": "user"
+    },
+    "Storage": {
+        "Timeout": 168,
+        "Key": "xe",
+        "ResetKey": "20220606"
+    },
+
+    "isServed": true
+}

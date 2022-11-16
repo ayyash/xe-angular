@@ -1,0 +1,39 @@
+{
+  "name": "xe-angular",
+  "version": "1.0.0",
+  "description": "XE using Angular",
+  "scripts": {
+    "start": "ng serve  --port 5100 --watch  --live-reload false",
+    "build": "ng build --configuration=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayyash/xe-angular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayyash/xe-angular/issues"
+  },
+  "homepage": "https://github.com/ayyash/xe-angular#readme",
+  "dependencies": {
+    "@angular/common": "^14.2.10",
+    "@angular/compiler": "^14.2.10",
+    "@angular/core": "^14.2.10",
+    "@angular/forms": "^14.2.10",
+    "@angular/platform-browser": "^14.2.10",
+    "@angular/platform-browser-dynamic": "^14.2.10",
+    "@angular/router": "^14.2.10",
+    "rxjs": "^7.5.7",
+    "shut": "^6.3.3",
+    "zone.js": "^0.12.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.9",
+    "@angular/cli": "^14.2.9",
+    "@angular/compiler-cli": "^14.2.10",
+    "@types/node": "^18.11.9",
+    "rxjs-tslint": "^0.1.8",
+    "tslib": "^2.4.1"
+  }
+}
