@@ -1,12 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, switchMap, tap } from 'rxjs';
-import { Toast } from '../../lib/toast/toast.state';
+import { map, Observable } from 'rxjs';
 import { EnumDataType } from '../../models/data.model';
-import { IFixer } from '../../models/fixer.model';
-import { DataService } from '../../services/data.service';
-import { FixerService } from '../../services/fixer.service';
 import { DataPartialComponent } from '../common/data.partial';
 
 @Component({
@@ -23,9 +19,7 @@ export class RateDetailsComponent implements OnInit {
 
 
    constructor(
-      private route: ActivatedRoute,
-      private toast: Toast,
-      private fixerService: FixerService) {
+      private route: ActivatedRoute) {
       //
    }
    ngOnInit(): void {
