@@ -1,5 +1,6 @@
 <div class="page">
     <div class="container">
-        details of rate
+        <h5 *ngIf="code$ | async as code">
+         <xe-data [dataitem]="{key: code, type: enumDataType.CurrSymbol}"></xe-data></h5>
     </div>
 </div>

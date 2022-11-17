@@ -1,12 +1,14 @@
 <div class="page">
-    <div class="container">
-        <div class="box">
-            <xe-convert-form (onSave)="update($event)"></xe-convert-form>
-        </div>
+   <div class="container">
+      <div class="box">
+         <xe-convert-form [defaultState]="defaultState" (onSave)="update($event)"></xe-convert-form>
+      </div>
+      <section>
+         <xe-convert-result></xe-convert-result>
+      </section>
+      <section>
+         <xe-rate-list></xe-rate-list>
+      </section>
 
-        <section>
-            <xe-rate-list ></xe-rate-list>
-        </section>
-
-    </div>
+   </div>
 </div>

@@ -8,9 +8,9 @@ export const toSentenceCase = (s: string) => {
 export const toPrettyPrice = (s: string) => {
     const ret = Number(s.replace(/,/gi, ''));
     if (isNaN(ret)) { return s; }
-    // read number, tofixed of 2 digits, insert "," in every three digits, if its already fixed, unfix first
-
-    const _ret = ret.toFixed(2),
+    // read number, tofixed of 3 digits, insert "," in every three digits, if its already fixed, unfix first
+   // TODO: use Intl.NumberFormat
+    const _ret = ret.toFixed(3),
         x = _ret.toString().split('.'),
         x2 = x.length > 1 ? '.' + x[1] : '',
         rgx = /(\d+)(\d{3})/;

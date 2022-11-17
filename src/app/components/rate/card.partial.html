@@ -1,6 +1,6 @@
 <div class="card box box-white" *ngIf="rate">
     <div class="content">
-        {{ result }}
+        {{ result | prettyprice}}
     </div>
     <div class="tail">
         {{ rate.key }}

@@ -21,7 +21,7 @@ export class RouteReuseService extends RouteReuseStrategy {
     if (future.routeConfig === curr.routeConfig) {
       if (future.data && future.data.reuse === 'never') {
         // check id, if the same, reuse, else reload
-        return curr.paramMap.get('id') === future.paramMap.get('id');
+        return curr.paramMap.get('code') === future.paramMap.get('code');
 
       }
 

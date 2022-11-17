@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { IFixer } from '../models/fixer.model';
 import { StateService } from './state.abstract';
 
-export interface ISomething {
+export interface IConvert {
     currentBase: string;
     to: string;
     amount?: number;
 }
 @Injectable({providedIn: 'root'})
-export class FixerState extends StateService<ISomething> {}
+export class ConvertState extends StateService<IConvert> {
+   constructor(){
+      super('none');
+   }
+}
 

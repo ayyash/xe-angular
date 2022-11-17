@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DataService, IData, IViewMode} from '../../core/services';
+import { DataService, IData} from '../../core/services';
 import { MdInputModule } from '../../lib/mdinput/mdinput.module';
 import { Toast } from '../../lib/toast/toast.state';
-import { ISomething } from '../../services/fixer.state';
+import { IConvert } from '../../services/convert.state';
 
 
 @Component({
@@ -18,8 +18,9 @@ import { ISomething } from '../../services/fixer.state';
 export class ConvertFormPartialComponent implements OnInit {
 
     // Add types
+   @Input() defaultState: IConvert;
 
-    @Output() onSave: EventEmitter<ISomething> = new EventEmitter<ISomething>();
+    @Output() onSave: EventEmitter<IConvert> = new EventEmitter<IConvert>();
 
     forceValidation = false;
     convertForm: FormGroup;
@@ -35,9 +36,9 @@ export class ConvertFormPartialComponent implements OnInit {
 
         // TODO: set defaults
         this.convertForm = this.fb.group({
-            currentBase: [],
-            to: [],
-            amount: []
+            currentBase: [this.defaultState.currentBase],
+            to: [this.defaultState.to],
+            amount: [this.defaultState.amount]
         });
     }
 

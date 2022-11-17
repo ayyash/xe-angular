@@ -10,6 +10,7 @@ export interface IListOptions {
     to?: string;
     start_date?: string;
     end_date?: string;
+    amount?: number;
 }
 
 
@@ -23,4 +24,11 @@ export class ListOptions {
 
         };
     }
+    public static MapConvertOptions(options: IListOptions): any {
+      return {
+          from: options.from,
+          to: options.to,
+          amount: options.amount
+      };
+  }
 }

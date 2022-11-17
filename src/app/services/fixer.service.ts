@@ -12,12 +12,15 @@ import { IFixer, Fixer, IListOptions, ListOptions } from '../core/services';
 export class FixerService {
 
     private _listUrl = Config.API.fixer.list;
+    private _convertUrl = Config.API.fixer.convert;
     private _detailsUrl = Config.API.fixer.details;
 
     constructor(private _http: HttpClient) {
 
     }
 
+    // TODO: save in storage for 24 hours
+    // VER_NEXT: what if I get all rates to USD and do all the calculations in the browser
     GetFixers(options: IListOptions = {}): Observable<IFixer[]> {
         const params = GetParamsAsString(ListOptions.MapListOptions(options), true);
         const _url = this._listUrl.replace(':options', params);
@@ -29,16 +32,27 @@ export class FixerService {
         );
     }
 
+    Convert(options: IListOptions = {}): Observable<IFixer> {
+      const params = GetParamsAsString(ListOptions.MapConvertOptions(options), true);
+        const _url = this._convertUrl.replace(':options', params);
+        return this._http.get(_url).pipe(
+            map(response => {
+                return Fixer.NewInstance(<any>response, options.to);
+            })
+        );
+    }
 
-    // GetFixer(id: string): Observable<IFixer> {
-    //     const _url = this._detailsUrl.replace(':id', id);
-    //     return this._http.get(_url).pipe(
-    //         map(response => {
-    //             return Fixer.NewInstance(response);
-    //         })
-    //     );
 
-    // }
+    GetFixer(code: string): Observable<IFixer> {
+      // what is this supposed to return, nothing, historical data maybe?
+        const _url = this._detailsUrl.replace(':code', code);
+        return this._http.get(_url).pipe(
+            map(response => {
+                return Fixer.NewInstance(response);
+            })
+        );
+
+    }
 
 
 }

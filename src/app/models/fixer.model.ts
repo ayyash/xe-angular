@@ -4,13 +4,28 @@ import { Config } from '../config';
 export interface IFixer {
     key: string;
     xeRate?: number;
+    result?: number;
 
 }
 
 export class Fixer implements IFixer {
     public key: string;
 
-    public static NewInstances(fixers: any, key: string = Config.Basic.BaseCurrency): IFixer[] {
+    public static NewInstance(fixer: any, key: string = Config.FixerSettings.BaseCurrency): IFixer {
+      /* find rate
+      "info": {
+         "rate": 148.972231,
+         "timestamp": 1519328414
+      },
+      */
+      return {
+         key,
+         xeRate: fixer?.info?.rate,
+         result: fixer?.result
+     };
+    }
+
+    public static NewInstances(fixers: any, key: string = Config.FixerSettings.BaseCurrency): IFixer[] {
         // turn into array
         /*
         {
@@ -30,7 +45,7 @@ export class Fixer implements IFixer {
             return Object.keys(fixers.rates).map(n => {
                 return {
                     key: n,
-                    xeRate: fixers.rates[n],
+                    xeRate: fixers.rates[n]
                 };
             });
         }

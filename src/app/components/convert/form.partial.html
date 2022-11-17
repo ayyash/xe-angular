@@ -1,36 +1,33 @@
 <form [formGroup]="convertForm" novalidate [class.was-validated]="forceValidation">
-    <fieldset>
-        <div class="grid g-3">
-            <div class="breath">
-                <md-input placeholder="Amount">
-                    <input type="text" id="amount" class="md-input w100" mdinput formControlName="amount"
-                        [required]="true" />
+   <fieldset class="row-spaced">
+      <div class="col md-4">
+         <md-input placeholder="Amount">
+            <input type="text" id="amount" class="md-input w100" mdinput formControlName="amount" [required]="true" />
 
-                </md-input>
-            </div>
-            <ng-container *ngIf="currencies$ | async as currencies">
-                <div class="spaced">
-                    <md-input placeholder="From">
-                        <select formControlName="currentBase" mdinput class="md-input w100" [compareWith]="compareFn"
-                            [required]="true">
-                            <option *ngFor="let currency of currencies" [ngValue]="currency">{{ currency.key }}</option>
-                        </select>
-                    </md-input>
-                </div>
-                <div class="spaced">
-                    <md-input placeholder="To">
-                        <select formControlName="to" mdinput class="md-input w100" [compareWith]="compareFn"
-                            [required]="true">
-                            <option *ngFor="let currency of currencies" [ngValue]="currency">{{ currency.key }}</option>
-                        </select>
-                    </md-input>
-                </div>
-            </ng-container>
+         </md-input>
+      </div>
+      <ng-container *ngIf="currencies$ | async as currencies">
+         <div class="col md-4">
+            <md-input placeholder="From">
+               <select formControlName="currentBase" mdinput class="md-input w100" [compareWith]="compareFn"
+                  [required]="true">
+                  <option *ngFor="let currency of currencies" [value]="currency.key">{{ currency.key }}</option>
+               </select>
+            </md-input>
+         </div>
+         <div class="col md-4">
+            <md-input placeholder="To">
+               <select formControlName="to" mdinput class="md-input w100" [compareWith]="compareFn" [required]="true">
+                  <option *ngFor="let currency of currencies" [value]="currency.key">{{ currency.key }}</option>
+               </select>
+            </md-input>
+         </div>
+      </ng-container>
 
+   </fieldset>
+   <div class="txt-r">
 
-        </div>
-    </fieldset>
-
- <button class="btn-rev" type="submit" (click)="saveConvert()">Convert</button>
+       <button class="btn-rev" type="submit" (click)="saveConvert()">Convert</button>
+   </div>
 
 </form>

@@ -3,7 +3,7 @@
 export { ConfigService } from '../services/config.service';
 export { DataService } from '../services/data.service';
 export { FixerService } from '../services/fixer.service';
-export { FixerState } from '../services/fixer.state';
+export { ConvertState } from '../services/convert.state';
 export { LoaderService } from '../services/loader.service';
 export { StorageService } from '../services/storage.service';
 // endinject
@@ -16,7 +16,4 @@ export * from '../models/error.model';
 export * from '../models/fixer.model';
 export * from '../models/list.model';
 export * from '../models/loaderstate.model';
-export * from '../models/status.model';
-export * from '../models/user.model';
-export * from '../models/viewmode.model';
 // endinject

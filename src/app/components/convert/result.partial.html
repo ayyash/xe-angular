@@ -1,0 +1,6 @@
+<div class="box box-white" *ngIf="rate$ | async as rate">
+   <div class="larger">
+      <a routerLink="/rates/{{ rate.key }}">{{ rate.result | prettyprice }} {{ rate.key }}</a>
+   </div>
+   <div class="small light">1 {{ currentBase }} = {{ rate.xeRate }} {{ rate.key }}</div>
+</div>
