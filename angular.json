@@ -78,7 +78,7 @@
 
                   },
                   "production": {
-                     "outputPath": "./host/client/",
+                     "outputPath": "./host/",
                      "fileReplacements": [
                         {
                            "replace": "src/environments/environment.ts",

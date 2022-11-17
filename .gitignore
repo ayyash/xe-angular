@@ -4,3 +4,4 @@ gulpbin
 package-lock.json
 raw/dummy
 .angular
+/host
